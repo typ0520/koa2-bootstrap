@@ -12,6 +12,11 @@ var debug = require('debug')('demo:server');
 var http = require('http');
 
 /**
+ * 执行 npm run db:migrate
+ */
+//TODO
+
+/**
  * Get port from environment and store in Express.
  */
 

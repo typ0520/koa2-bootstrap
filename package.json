@@ -7,7 +7,8 @@
     "dev": "./node_modules/.bin/nodemon bin/www",
     "prd": "pm2 start bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sequelize": "node_modules/.bin/sequelize"
+    "sequelize": "node_modules/.bin/sequelize",
+    "db:migrate": "node_modules/.bin/sequelize db:migrate"
   },
   "dependencies": {
     "debug": "^2.6.3",

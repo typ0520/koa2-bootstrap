@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  # app
+  koa2-bootstrap-app:
+    image: koa2-bootstrap:latest
+    depends_on:
+      - mysql
+    ports:
+      - "10001:8080"
+
+  # MySQL
+  mysql:
+    image: "mysql:5.7"
+    environment:
+      MYSQL_DATABASE: koa2-bootstrap
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes: 
+      - $PWD/data:/var/lib/mysql
+    ports:
+      - "13307:3306"

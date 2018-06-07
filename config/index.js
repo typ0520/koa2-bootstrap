@@ -1,15 +1,7 @@
-const defaultConfig = require('./default.js');
-const devConfig = require('./development.js');
-const prodConfig = require('./production.js');
+const fs = require('fs')
+const path = require('path')
 
-const env = process.env.NODE_ENV;
-console.log(`NODE_ENV: ${env}`);
-
-let config = defaultConfig;
-
-if (env === 'development') {
-    config = Object.assign(config, devConfig);
-} if (env === 'production') {
-    config = Object.assign(config, devConfig);
-}
-module.exports = config;
+const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'config.json')))
+const env = process.env.NODE_ENV || 'development';
+console.log(`load config: [defult, ${env}]`);
+module.exports = Object.assign(config.default || {}, config[env])
