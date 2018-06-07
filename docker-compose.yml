@@ -4,6 +4,11 @@ services:
   # app
   koa2-bootstrap-app:
     image: koa2-bootstrap:latest
+    environment:
+      DB_NAME: koa2-bootstrap
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      DB_HOSTNAME: mysql
     depends_on:
       - mysql
     ports:

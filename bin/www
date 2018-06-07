@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
-
+console.log(process.env.DB_NAME)
+console.log(process.env.DB_PASSWORD)
+console.log(process.env.DB_PASSWORD)
+console.log(process.env.DB_HOSTNAME)
 /**
  * Module dependencies.
  */

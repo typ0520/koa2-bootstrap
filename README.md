@@ -3,17 +3,17 @@
 - Bootstrapping
 
 ```
-node_modules/.bin/sequelize init
+./sequelize init
 ```
 
 - Creating first Model
 
 ```
-node_modules/.bin/sequelize model:generate --name User --attributes username:string,password:string,email:string
+./sequelize model:generate --name User --attributes username:string,password:string,email:string
 ```
 
 - Running Migrations
 
 ```
-node_modules/.bin/sequelize db:migrate
+./sequelize db:migrate
 ```
