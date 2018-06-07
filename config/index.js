@@ -6,7 +6,12 @@ const config = {
     default: {
         port: 8080
     },
-    development: {},
+    development: {
+        redis: {
+            host: 'localhost',
+            port: 6379,
+        }
+    },
     test: {},
     production: {}
 }
