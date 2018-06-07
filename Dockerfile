@@ -18,4 +18,4 @@ COPY . .
 ENV PORT=8080 NODE_ENV=production
 EXPOSE 8080
 
-CMD [ "node", "bin/www" ]
+CMD [ "node", "bin/www", "--migrate" ]

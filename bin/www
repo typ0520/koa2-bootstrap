@@ -10,11 +10,17 @@ var config = require('../config')
 var app = require('../src/app');
 var debug = require('debug')('demo:server');
 var http = require('http');
+var child_process = require('child_process');
 
 /**
  * 执行 npm run db:migrate
  */
-//TODO
+var argv = [].slice.call(process.argv, 2) || []
+if (argv.indexOf('--migrate') != -1) {
+  console.log('execute db:migrate')
+  var result = child_process.execSync('node_modules/.bin/sequelize db:migrate')
+  console.log(result.toString())
+}
 
 /**
  * Get port from environment and store in Express.
