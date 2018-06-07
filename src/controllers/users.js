@@ -28,7 +28,7 @@ router.delete('/:id', async (ctx) => {
 })
 
 router.post('/', async (ctx) => {
-  const form = JSON.parse(ctx.request.body)
+  const form = (typeof ctx.request.body === 'object') ? ctx.request.body : JSON.parse(ctx.request.body)
   console.log(form)
   User.create(form)
   ctx.body = {
