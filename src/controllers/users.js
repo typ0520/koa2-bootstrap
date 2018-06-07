@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const User = require('../models').User
+const logger = require('../utils/logger')
 
 router.prefix('/users')
 
@@ -29,7 +30,7 @@ router.delete('/:id', async (ctx) => {
 
 router.post('/', async (ctx) => {
   const form = (typeof ctx.request.body === 'object') ? ctx.request.body : JSON.parse(ctx.request.body)
-  console.log(form)
+  console.debug(form)
   User.create(form)
   ctx.body = {
     status: 1,
@@ -39,7 +40,6 @@ router.post('/', async (ctx) => {
 
 router.put('/:id', async (ctx) => {
   const form = (typeof ctx.request.body === 'object') ? ctx.request.body : JSON.parse(ctx.request.body)
-  console.log(form)
 
   const user = await User.findOne({
     where: {
@@ -53,10 +53,6 @@ router.put('/:id', async (ctx) => {
     status: 1,
     msg: '操作成功'
   }
-})
-
-router.get('/ping', async (ctx) => {
-  ctx.body = 'this is a users/ping response'
 })
 
 module.exports = router
