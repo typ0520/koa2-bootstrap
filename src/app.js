@@ -5,9 +5,23 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const jwt = require('koa-jwt')
+const cors = require('koa-cors')
+const helmet = require('koa-helmet')
 const path = require('path');
+const errorHandle = require('./middlewares/errorHandle')
+const config = require('../config')
 
-//const router = require('./routes')
+// apply middlewares
+app
+  .use(errorHandle)
+  .use(jwt({
+    secret: config.secret
+  }).unless({
+    path: [/\/register/, /\/login/],
+  }))
+  .use(helmet())
+  .use(cors())
 
 // error handler
 onerror(app)
@@ -34,7 +48,6 @@ app.use(async (ctx, next) => {
 
 // routes
 require('./routes')(app)
-//app.use(router.routes(), router.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

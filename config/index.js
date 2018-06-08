@@ -6,7 +6,9 @@ const config = {
     default: {
         port: 8080
     },
-    development: {},
+    development: {
+        secret: 'sdsdsfdegfdsgdssd'
+    },
     test: {},
     production: {}
 }
