@@ -1,0 +1,10 @@
+.git
+.vscode
+data
+node_modules
+test
+*.sh
+*.sqlite
+README.READMEd
+*.yml
+.gitignore
